@@ -1,0 +1,61 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31410.357
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sky Updater", "Sky multi Updater\Sky Updater.csproj", "{CECB3248-EB32-4041-ACB6-1E1C3D633517}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ResolutionMonitor", "..\Sky multi\ResolutionMonitor\ResolutionMonitor.csproj", "{53D611B6-1967-4F73-924C-2CAED8738D41}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|ARM64 = Debug|ARM64
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|ARM64 = Release|ARM64
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CECB3248-EB32-4041-ACB6-1E1C3D633517}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CECB3248-EB32-4041-ACB6-1E1C3D633517}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CECB3248-EB32-4041-ACB6-1E1C3D633517}.Debug|ARM64.ActiveCfg = Debug|Any CPU
+		{CECB3248-EB32-4041-ACB6-1E1C3D633517}.Debug|ARM64.Build.0 = Debug|Any CPU
+		{CECB3248-EB32-4041-ACB6-1E1C3D633517}.Debug|x64.ActiveCfg = Debug|x64
+		{CECB3248-EB32-4041-ACB6-1E1C3D633517}.Debug|x64.Build.0 = Debug|x64
+		{CECB3248-EB32-4041-ACB6-1E1C3D633517}.Debug|x86.ActiveCfg = Debug|x86
+		{CECB3248-EB32-4041-ACB6-1E1C3D633517}.Debug|x86.Build.0 = Debug|x86
+		{CECB3248-EB32-4041-ACB6-1E1C3D633517}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CECB3248-EB32-4041-ACB6-1E1C3D633517}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CECB3248-EB32-4041-ACB6-1E1C3D633517}.Release|ARM64.ActiveCfg = Release|Any CPU
+		{CECB3248-EB32-4041-ACB6-1E1C3D633517}.Release|ARM64.Build.0 = Release|Any CPU
+		{CECB3248-EB32-4041-ACB6-1E1C3D633517}.Release|x64.ActiveCfg = Release|x64
+		{CECB3248-EB32-4041-ACB6-1E1C3D633517}.Release|x64.Build.0 = Release|x64
+		{CECB3248-EB32-4041-ACB6-1E1C3D633517}.Release|x86.ActiveCfg = Release|x86
+		{CECB3248-EB32-4041-ACB6-1E1C3D633517}.Release|x86.Build.0 = Release|x86
+		{53D611B6-1967-4F73-924C-2CAED8738D41}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{53D611B6-1967-4F73-924C-2CAED8738D41}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{53D611B6-1967-4F73-924C-2CAED8738D41}.Debug|ARM64.ActiveCfg = Debug|Any CPU
+		{53D611B6-1967-4F73-924C-2CAED8738D41}.Debug|ARM64.Build.0 = Debug|Any CPU
+		{53D611B6-1967-4F73-924C-2CAED8738D41}.Debug|x64.ActiveCfg = Debug|x64
+		{53D611B6-1967-4F73-924C-2CAED8738D41}.Debug|x64.Build.0 = Debug|x64
+		{53D611B6-1967-4F73-924C-2CAED8738D41}.Debug|x86.ActiveCfg = Debug|x86
+		{53D611B6-1967-4F73-924C-2CAED8738D41}.Debug|x86.Build.0 = Debug|x86
+		{53D611B6-1967-4F73-924C-2CAED8738D41}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{53D611B6-1967-4F73-924C-2CAED8738D41}.Release|Any CPU.Build.0 = Release|Any CPU
+		{53D611B6-1967-4F73-924C-2CAED8738D41}.Release|ARM64.ActiveCfg = Release|Any CPU
+		{53D611B6-1967-4F73-924C-2CAED8738D41}.Release|ARM64.Build.0 = Release|Any CPU
+		{53D611B6-1967-4F73-924C-2CAED8738D41}.Release|x64.ActiveCfg = Release|x64
+		{53D611B6-1967-4F73-924C-2CAED8738D41}.Release|x64.Build.0 = Release|x64
+		{53D611B6-1967-4F73-924C-2CAED8738D41}.Release|x86.ActiveCfg = Release|x86
+		{53D611B6-1967-4F73-924C-2CAED8738D41}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5ADA8991-DD6C-47F2-B09F-E669F911506A}
+	EndGlobalSection
+EndGlobal
