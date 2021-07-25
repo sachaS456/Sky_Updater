@@ -12,4 +12,8 @@
     <AssemblyOriginatorKeyFile>Sky_Updater_3_SH.pfx</AssemblyOriginatorKeyFile>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\Sky framework\Sky framework\Sky framework.csproj" />
+  </ItemGroup>
+
 </Project>

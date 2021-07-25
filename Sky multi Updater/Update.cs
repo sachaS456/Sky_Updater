@@ -12,13 +12,61 @@ namespace Sky_Updater
     {
         public static bool CheckUpdate(string AppName, string Version)
         {
-            if (DownloadString("https://serie-sky.netlify.app/Download/" + AppName + "/Version.txt") != Version)
+            try
             {
-                return true;
+                if (DownloadString("https://serie-sky.netlify.app/Download/" + AppName + "/Version.txt") != Version)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
             }
-            else
+            catch (System.Net.Http.HttpRequestException e)
             {
-                return false;
+                if (e.Message == "Hôte inconnu. (serie-sky.netlify.app:443)")
+                {
+                    return false;
+                }
+                else
+                {
+                    throw;
+                }
+            }
+            catch
+            {
+                throw;
+            }
+        }
+
+        public static async Task<bool> CheckUpdateAsync(string AppName, string Version)
+        {
+            try
+            {
+                if (await DownloadStringAsync("https://serie-sky.netlify.app/Download/" + AppName + "/Version.txt") != Version)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (System.Net.Http.HttpRequestException e)
+            {
+                if (e.Message == "Hôte inconnu. (serie-sky.netlify.app:443)")
+                {
+                    return false;
+                }
+                else
+                {
+                    throw;
+                }
+            }
+            catch
+            {
+                throw;
             }
         }
 
