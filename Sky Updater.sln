@@ -5,8 +5,6 @@ VisualStudioVersion = 16.0.31410.357
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sky Updater", "Sky multi Updater\Sky Updater.csproj", "{CECB3248-EB32-4041-ACB6-1E1C3D633517}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ResolutionMonitor", "..\Sky multi\ResolutionMonitor\ResolutionMonitor.csproj", "{53D611B6-1967-4F73-924C-2CAED8738D41}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sky framework", "..\Sky framework\Sky framework\Sky framework.csproj", "{EA03B2F1-23DC-4D13-B872-796329D31F7A}"
 EndProject
 Global
@@ -37,22 +35,6 @@ Global
 		{CECB3248-EB32-4041-ACB6-1E1C3D633517}.Release|x64.Build.0 = Release|x64
 		{CECB3248-EB32-4041-ACB6-1E1C3D633517}.Release|x86.ActiveCfg = Release|x86
 		{CECB3248-EB32-4041-ACB6-1E1C3D633517}.Release|x86.Build.0 = Release|x86
-		{53D611B6-1967-4F73-924C-2CAED8738D41}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{53D611B6-1967-4F73-924C-2CAED8738D41}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{53D611B6-1967-4F73-924C-2CAED8738D41}.Debug|ARM64.ActiveCfg = Debug|Any CPU
-		{53D611B6-1967-4F73-924C-2CAED8738D41}.Debug|ARM64.Build.0 = Debug|Any CPU
-		{53D611B6-1967-4F73-924C-2CAED8738D41}.Debug|x64.ActiveCfg = Debug|x64
-		{53D611B6-1967-4F73-924C-2CAED8738D41}.Debug|x64.Build.0 = Debug|x64
-		{53D611B6-1967-4F73-924C-2CAED8738D41}.Debug|x86.ActiveCfg = Debug|x86
-		{53D611B6-1967-4F73-924C-2CAED8738D41}.Debug|x86.Build.0 = Debug|x86
-		{53D611B6-1967-4F73-924C-2CAED8738D41}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{53D611B6-1967-4F73-924C-2CAED8738D41}.Release|Any CPU.Build.0 = Release|Any CPU
-		{53D611B6-1967-4F73-924C-2CAED8738D41}.Release|ARM64.ActiveCfg = Release|Any CPU
-		{53D611B6-1967-4F73-924C-2CAED8738D41}.Release|ARM64.Build.0 = Release|Any CPU
-		{53D611B6-1967-4F73-924C-2CAED8738D41}.Release|x64.ActiveCfg = Release|x64
-		{53D611B6-1967-4F73-924C-2CAED8738D41}.Release|x64.Build.0 = Release|x64
-		{53D611B6-1967-4F73-924C-2CAED8738D41}.Release|x86.ActiveCfg = Release|x86
-		{53D611B6-1967-4F73-924C-2CAED8738D41}.Release|x86.Build.0 = Release|x86
 		{EA03B2F1-23DC-4D13-B872-796329D31F7A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{EA03B2F1-23DC-4D13-B872-796329D31F7A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EA03B2F1-23DC-4D13-B872-796329D31F7A}.Debug|ARM64.ActiveCfg = Debug|ARM64
