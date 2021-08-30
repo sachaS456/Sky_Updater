@@ -15,7 +15,6 @@ namespace Sky_Updater
     public sealed class DownloadUpdaterDialog : Sky_framework.Rectangle
     {
         private Sky_framework.ProgressBar progressBar1;
-        private Sky_framework.Button button1;
         private Label label1;
         private Label label2;
         private string App;
@@ -65,14 +64,14 @@ namespace Sky_Updater
 
         private void DownloadCompleted()
         {
-            Stream streamWriter = new FileStream(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\Sky multi\Sky multi setup x64.exe", FileMode.Create, 
+            Stream streamWriter = new FileStream(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\" + App + @"\"+ App + " setup x64.exe", FileMode.Create, 
                 FileAccess.Write, FileShare.None);
             byte[] buffer = new byte[8192];
-            int nbFile = Directory.EnumerateFiles(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\Sky multi\Sky multi setup x64").Count();
+            int nbFile = Directory.EnumerateFiles(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\" + App + @"\" + App + " setup x64").Count();
 
             for (int index = 0; index < nbFile; index++)
             {
-                Stream streamReader = new FileStream(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\Sky multi\Sky multi setup x64\" + index, FileMode.Open,
+                Stream streamReader = new FileStream(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\" + App + @"\" + App + @" setup x64\" + index, FileMode.Open,
                     FileAccess.Read, FileShare.None);
 
                 bool FileWrite = true;
@@ -90,7 +89,7 @@ namespace Sky_Updater
                 }
 
                 streamReader.Close();
-                File.Delete(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\Sky multi\Sky multi setup x64\" + index);
+                File.Delete(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\" + App + @"\" + App + @" setup x64\" + index);
             }
 
             streamWriter.Close();
@@ -100,73 +99,93 @@ namespace Sky_Updater
             process.StartInfo.UseShellExecute = true;
             if (Environment.Is64BitProcess)
             {
-                process.StartInfo.FileName = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\Sky multi\Sky multi setup x64.exe";
+                process.StartInfo.FileName = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\" + App + @"\" + App + " setup x64.exe";
             }
             else
             {
-                process.StartInfo.FileName = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\Sky multi\Sky multi setup x86.exe";
+                process.StartInfo.FileName = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\" + App + @"\" + App + " setup x86.exe";
             }
-            process.Start();
+
+            for (bool NoError = false; NoError == false;)
+            {
+                try
+                {
+                    process.Start();
+                    NoError = true;
+                }
+                catch
+                {
+                    NoError = false;
+                }
+            }
+
             process.Close();
-            process = null;
+
+            foreach (Process i in Process.GetProcessesByName(App))
+            {
+                if (i != Process.GetCurrentProcess())
+                {
+                    i.Kill();
+                }
+            }
 
             Environment.Exit(0);
         }
 
         private void DownloadUpdate()
         {
-            if (Directory.Exists(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\Sky multi"))
+            if (Directory.Exists(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\" + App))
             {
-                Directory.CreateDirectory(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\Sky multi");
+                Directory.CreateDirectory(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\" + App);
             }
 
             if (Environment.Is64BitProcess)
             {
-                if (File.Exists(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\Sky multi\Sky multi setup x64.exe"))
+                if (File.Exists(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\" + App + @"\" + App + " setup x64.exe"))
                 {
-                    File.Delete(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\Sky multi\Sky multi setup x64.exe");
+                    File.Delete(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\" + App + @"\" + App + " setup x64.exe");
                 }
 
-                if (Directory.Exists(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\Sky multi\Sky multi setup x64"))
+                if (Directory.Exists(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\" + App + @"\" + App + " setup x64"))
                 {
-                    Directory.Delete(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\Sky multi\Sky multi setup x64", true);
+                    Directory.Delete(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\" + App + @"\" + App + " setup x64", true);
                 }
 
-                Directory.CreateDirectory(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\Sky multi\Sky multi setup x64");
+                Directory.CreateDirectory(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\" + App + @"\" + App + " setup x64");
 
-                int nbFile = Convert.ToInt32(Sky_Updater.Update.DownloadString("https://serie-Sky.netlify.app/Download/" + App + "/Sky multi setup x64/NbFile.txt"));
+                int nbFile = Convert.ToInt32(Sky_Updater.Update.DownloadString("https://serie-Sky.netlify.app/Download/" + App + "/" + App + " setup x64/NbFile.txt"));
                 List<string> stringList = new List<string>();
 
                 for (int index = 0; index <= nbFile; index++)
                 {
-                    stringList.Add("https://serie-Sky.netlify.app/Download/" + App + "/Sky multi setup x64/" + index);
+                    stringList.Add("https://serie-Sky.netlify.app/Download/" + App + "/" + App + " setup x64/" + index);
                 }
 
-                Downloader downloader = new Downloader(stringList.ToArray(), Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\Sky multi\Sky multi setup x64");
+                Downloader downloader = new Downloader(stringList.ToArray(), Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\" + App + @"\" + App + " setup x64");
                 downloader.ProgressChanged += new ProgressChangedHandler(ProgressChanged);
                 downloader.DownloadCompleted += new DownloadCompletedHandler(DownloadCompleted);
                 downloader.StartDownloadListAsync();
             }
             else
             {
-                if (File.Exists(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\Sky multi\Sky multi setup x86.exe"))
+                if (File.Exists(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\" + App + @"\" + App + " setup x86.exe"))
                 {
-                    File.Delete(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\Sky multi\Sky multi setup x86.exe");
+                    File.Delete(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\" + App + @"\" + App + " setup x86.exe");
                 }
 
-                if (Directory.Exists(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\Sky multi\Sky multi setup x86"))
+                if (Directory.Exists(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\" + App + @"\" + App + " setup x86"))
                 {
-                    Directory.Delete(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\Sky multi\Sky multi setup x86", true);
+                    Directory.Delete(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\" + App + @"\" + App + " setup x86", true);
                 }
 
-                Directory.CreateDirectory(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\Sky multi\Sky multi setup x86");
+                Directory.CreateDirectory(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\" + App + @"\" + App + " setup x86");
 
-                int nbFile = Convert.ToInt32(Sky_Updater.Update.DownloadString("https://serie-Sky.netlify.app/Download/" + App + "/Sky multi setup x86/NbFile.txt"));
+                int nbFile = Convert.ToInt32(Sky_Updater.Update.DownloadString("https://serie-Sky.netlify.app/Download/" + App + "/" + App + @" setup x86/NbFile.txt"));
                 List<string> stringList = new List<string>();
 
                 for (int index = 0; index <= nbFile; index++)
                 {
-                    stringList.Add("https://serie-Sky.netlify.app/Download/" + App + "/Sky multi setup x86/" + index);
+                    stringList.Add("https://serie-Sky.netlify.app/Download/" + App + "/" + App + @"Sky multi setup x86/" + index);
                 }
 
                 Downloader downloader = new Downloader(stringList.ToArray(), Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\Sky multi\Sky multi setup x86");
@@ -181,7 +200,6 @@ namespace Sky_Updater
             this.progressBar1 = new Sky_framework.ProgressBar();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.button1 = new Sky_framework.Button();
             this.SuspendLayout();
             // 
             // progressBar1
@@ -211,20 +229,6 @@ namespace Sky_Updater
             this.label1.TabIndex = 4;
             this.label1.Text = "Update software :";
             // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.button1.Border = false;
-            this.button1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.button1.borderRadius = 5;
-            this.button1.ID = 0;
-            this.button1.Location = new System.Drawing.Point(259, 165);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(94, 29);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "Install";
-            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -244,7 +248,6 @@ namespace Sky_Updater
             this.BorderRadius = 15;
             this.BorderWidth = 3;
             this.ClientSize = new System.Drawing.Size(365, 206);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.progressBar1);
@@ -253,7 +256,6 @@ namespace Sky_Updater
             this.Controls.SetChildIndex(this.progressBar1, 0);
             this.Controls.SetChildIndex(this.label1, 0);
             this.Controls.SetChildIndex(this.label2, 0);
-            this.Controls.SetChildIndex(this.button1, 0);
             this.ResumeLayout(false);
             this.PerformLayout();
 
