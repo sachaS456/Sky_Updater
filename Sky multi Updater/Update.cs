@@ -1,10 +1,29 @@
-﻿using System;
+﻿/*--------------------------------------------------------------------------------------------------------------------
+ Copyright (C) 2021 Himber Sacha
+
+ This program is free software: you can redistribute it and/or modify
+ it under the +terms of the GNU General Public License as published by
+ the Free Software Foundation, either version 2 of the License, or
+ any later version.
+
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+
+ You should have received a copy of the GNU General Public License
+ along with this program.  If not, see https://www.gnu.org/licenses/gpl-2.0.html. 
+
+--------------------------------------------------------------------------------------------------------------------*/
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Net.Http;
 using System.IO;
+using System.Diagnostics;
 
 namespace Sky_Updater
 {
@@ -12,6 +31,14 @@ namespace Sky_Updater
     {
         public static bool CheckUpdate(string AppName, string Version)
         {
+            foreach (Process i in Process.GetProcessesByName("Sky multi"))
+            {
+                if (i.Id != Process.GetCurrentProcess().Id && i.MainModule.FileName == System.Windows.Forms.Application.ExecutablePath)
+                {
+                    return false;
+                }
+            }
+
             try
             {
                 if (DownloadString("https://serie-sky.netlify.app/Download/" + AppName + "/Version.txt") != Version)
@@ -42,6 +69,14 @@ namespace Sky_Updater
 
         public static async Task<bool> CheckUpdateAsync(string AppName, string Version)
         {
+            foreach (Process i in Process.GetProcessesByName("Sky multi"))
+            {
+                if (i.Id != Process.GetCurrentProcess().Id && i.MainModule.FileName == System.Windows.Forms.Application.ExecutablePath)
+                {
+                    return false;
+                }
+            }
+
             try
             {
                 if (await DownloadStringAsync("https://serie-sky.netlify.app/Download/" + AppName + "/Version.txt") != Version)

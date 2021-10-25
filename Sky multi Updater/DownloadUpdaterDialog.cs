@@ -1,4 +1,22 @@
-﻿using System;
+﻿/*--------------------------------------------------------------------------------------------------------------------
+ Copyright (C) 2021 Himber Sacha
+
+ This program is free software: you can redistribute it and/or modify
+ it under the +terms of the GNU General Public License as published by
+ the Free Software Foundation, either version 2 of the License, or
+ any later version.
+
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+
+ You should have received a copy of the GNU General Public License
+ along with this program.  If not, see https://www.gnu.org/licenses/gpl-2.0.html. 
+
+--------------------------------------------------------------------------------------------------------------------*/
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -121,9 +139,11 @@ namespace Sky_Updater
 
             process.Close();
 
+            MessageBox.Show("Warning! All " + App + " processes will be closed.", App, MessageBoxButtons.OK, MessageBoxIcon.Information);
+
             foreach (Process i in Process.GetProcessesByName(App))
             {
-                if (i != Process.GetCurrentProcess())
+                if (i.Id != Process.GetCurrentProcess().Id)
                 {
                     i.Kill();
                 }
