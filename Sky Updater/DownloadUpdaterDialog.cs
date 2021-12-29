@@ -23,25 +23,27 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
 using System.Windows.Forms;
-using Sky_framework;
+using Sky_UI;
 using System.Threading;
 using System.IO;
 using System.Diagnostics;
 
 namespace Sky_Updater
 {
-    public sealed class DownloadUpdaterDialog : Sky_framework.Rectangle
+    public sealed class DownloadUpdaterDialog : Sky_UI.Rectangle
     {
-        private Sky_framework.ProgressBar progressBar1;
+        private Sky_UI.ProgressBar progressBar1;
         private Label label1;
         private Label label2;
         private string App;
         private delegate void progressBarInvokeHandler(int value);
         private delegate void labelInvokeHandler(string text);
+        private readonly sbyte lang;
 
-        public DownloadUpdaterDialog(string app)
+        public DownloadUpdaterDialog(sbyte langage, string app)
         {
             App = app;
+            lang = langage;
             InitializeComponent();
 
             Thread thread = new Thread(DownloadUpdate);
@@ -63,11 +65,25 @@ namespace Sky_Updater
         {
             if (label2.InvokeRequired)
             {
-                label2.Invoke(new labelInvokeHandler(label2TextSet), "File : " + FileDownloaded + " / " + nbFile);
+                if (lang == 0) // FR
+                {
+                    label2.Invoke(new labelInvokeHandler(label2TextSet), "Fichier : " + FileDownloaded + " / " + nbFile);
+                }
+                else // EN
+                {
+                    label2.Invoke(new labelInvokeHandler(label2TextSet), "File : " + FileDownloaded + " / " + nbFile);
+                }
             }
             else
             {
-                label2TextSet("File : " + FileDownloaded + " / " + nbFile);
+                if (lang == 0)
+                {
+                    label2TextSet("Fichier : " + FileDownloaded + " / " + nbFile);
+                }
+                else
+                {
+                    label2TextSet("File : " + FileDownloaded + " / " + nbFile);
+                }
             }
 
             if (progressBar1.InvokeRequired)
@@ -139,7 +155,14 @@ namespace Sky_Updater
 
             process.Close();
 
-            MessageBox.Show("Warning! All " + App + " processes will be closed.", App, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            if (lang == 0)
+            {
+                MessageBox.Show("Attention! Tous les processus" + App + " seront fermés.", App, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show("Warning! All " + App + " processes will be closed.", App, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
 
             foreach (Process i in Process.GetProcessesByName(App))
             {
@@ -217,7 +240,7 @@ namespace Sky_Updater
 
         private void InitializeComponent()
         {
-            this.progressBar1 = new Sky_framework.ProgressBar();
+            this.progressBar1 = new Sky_UI.ProgressBar();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
@@ -235,7 +258,6 @@ namespace Sky_Updater
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(298, 17);
             this.progressBar1.TabIndex = 3;
-            this.progressBar1.Text = "progressBar1";
             this.progressBar1.ValuePourcentages = 0;
             // 
             // label1
@@ -247,7 +269,14 @@ namespace Sky_Updater
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(200, 32);
             this.label1.TabIndex = 4;
-            this.label1.Text = "Update software :";
+            if (lang == 0) // FR
+            {
+                this.label1.Text = "Mise à jour logiciel :";
+            }
+            else // EN
+            {
+                this.label1.Text = "Update software :";
+            }
             // 
             // label2
             // 
@@ -258,7 +287,14 @@ namespace Sky_Updater
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(200, 32);
             this.label2.TabIndex = 4;
-            this.label2.Text = "File : 0 / 0";
+            if (lang == 0)
+            {
+                this.label2.Text = "Fichier : 0 / 0";
+            }
+            else
+            {
+                this.label2.Text = "File : 0 / 0";
+            }
             // 
             // DownloadUpdaterDialog
             // 

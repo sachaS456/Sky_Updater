@@ -12,13 +12,13 @@
     <AssemblyOriginatorKeyFile>Sky_Updater_3_SH.pfx</AssemblyOriginatorKeyFile>
     <Copyright>Copyright © 2021 Himber Sacha</Copyright>
     <Authors>Sacha Himber</Authors>
-    <Version>3.0.0</Version>
+    <Version>3.1.0</Version>
     <NeutralLanguage>fr-FR</NeutralLanguage>
     <Description>Système de mise à jour des logiciels Sky Series sous Net.</Description>
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Sky framework\Sky framework\Sky framework.csproj" />
+    <ProjectReference Include="..\..\Sky UI\Sky UI\Sky UI.csproj" />
   </ItemGroup>
 
 </Project>
