@@ -1,4 +1,13 @@
-﻿Changes between 3.0.x and 3.1.0:
+﻿
+Changes between 3.1.0 and 3.1.1:
+----------------------------------
+
+-GPL 2 license upgrade to GPL 3 
+-.Net 5 upgrade to .Net 6
+
+----------------------------------
+
+Changes between 3.0.0 and 3.1.0:
 ----------------------------------
 
 -Added details of updates

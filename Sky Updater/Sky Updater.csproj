@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <OutputType>Library</OutputType>
-    <TargetFramework>net5.0-windows</TargetFramework>
+    <TargetFramework>net6.0-windows</TargetFramework>
     <RootNamespace>Sky_Updater</RootNamespace>
     <UseWindowsForms>true</UseWindowsForms>
     <ApplicationIcon />
@@ -10,9 +10,9 @@
     <Platforms>AnyCPU;x64;x86</Platforms>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>Sky_Updater_3_SH.pfx</AssemblyOriginatorKeyFile>
-    <Copyright>Copyright © 2021 Himber Sacha</Copyright>
+    <Copyright>Copyright © 2022 Himber Sacha</Copyright>
     <Authors>Sacha Himber</Authors>
-    <Version>3.1.0</Version>
+    <Version>3.1.1</Version>
     <NeutralLanguage>fr-FR</NeutralLanguage>
     <Description>Système de mise à jour des logiciels Sky Series sous Net.</Description>
   </PropertyGroup>
