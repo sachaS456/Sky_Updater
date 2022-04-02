@@ -1,4 +1,12 @@
 ﻿
+Changes between 3.1.1 and 3.1.2:
+----------------------------------
+
+-Fixed message box order
+-Fixed process detection
+
+----------------------------------
+
 Changes between 3.1.0 and 3.1.1:
 ----------------------------------
 

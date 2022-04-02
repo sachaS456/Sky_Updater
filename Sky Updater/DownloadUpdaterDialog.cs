@@ -129,6 +129,15 @@ namespace Sky_Updater
             streamWriter.Close();
             buffer = null;
 
+            if (lang == 0)
+            {
+                MessageBox.Show("Attention! Tous les processus" + App + " seront fermés.", App, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show("Warning! All " + App + " processes will be closed.", App, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+
             Process process = new Process();
             process.StartInfo.UseShellExecute = true;
             if (Environment.Is64BitProcess)
@@ -154,15 +163,6 @@ namespace Sky_Updater
             }
 
             process.Close();
-
-            if (lang == 0)
-            {
-                MessageBox.Show("Attention! Tous les processus" + App + " seront fermés.", App, MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            else
-            {
-                MessageBox.Show("Warning! All " + App + " processes will be closed.", App, MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
 
             foreach (Process i in Process.GetProcessesByName(App))
             {

@@ -31,7 +31,7 @@ namespace Sky_Updater
     {
         public static bool CheckUpdate(string AppName, string Version)
         {
-            foreach (Process i in Process.GetProcessesByName("Sky multi"))
+            foreach (Process i in Process.GetProcessesByName(AppName))
             {
                 if (i.Id != Process.GetCurrentProcess().Id && i.MainModule.FileName == System.Windows.Forms.Application.ExecutablePath)
                 {
@@ -69,7 +69,7 @@ namespace Sky_Updater
 
         public static async Task<bool> CheckUpdateAsync(string AppName, string Version)
         {
-            foreach (Process i in Process.GetProcessesByName("Sky multi"))
+            foreach (Process i in Process.GetProcessesByName(AppName))
             {
                 if (i.Id != Process.GetCurrentProcess().Id && i.MainModule.FileName == System.Windows.Forms.Application.ExecutablePath)
                 {
